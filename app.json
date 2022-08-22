@@ -1,6 +1,6 @@
 {
   "name": "Heroku Redirect",
-  "repository": "https://github.com/kenmickles/heroku-redirect",
+  "repository": "https://github.com/charlie0228/heroku-redirect",
   "env": {
     "NEW_BASE_URL": {
       "description": "Redirect all requests to this URL.",
@@ -9,6 +9,10 @@
     "REDIRECT_STATUS": {
       "description": "Redirect with this HTTP status code.",
       "value": "302"
+    },
+    "REDIRECT_TO_ROOT": {
+      "description": "Redirect all page to root.",
+      "value": "true"
     }
   }
 }
