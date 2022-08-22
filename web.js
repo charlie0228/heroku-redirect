@@ -1,12 +1,17 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var newBaseURL = process.env.NEW_BASE_URL || 'http://example.com';
-var redirectStatus = parseInt(process.env.REDIRECT_STATUS || 302);
-var port = process.env.PORT || 5000;
+const newBaseURL = process.env.NEW_BASE_URL || 'http://example.com';
+const redirectStatus = parseInt(process.env.REDIRECT_STATUS || 302);
+const redirectToRoot = process.env.REDIRECT_TO_ROOT === 'true'
+const port = process.env.PORT || 5000;
 
 app.get('*', function(request, response) {
-  response.redirect(redirectStatus, newBaseURL + request.url);
+  if (redirectToRoot) {
+    response.redirect(redirectStatus, newBaseURL);
+  } else {
+    response.redirect(redirectStatus, newBaseURL + request.url);
+  }
 });
 
 app.listen(port, function() {
